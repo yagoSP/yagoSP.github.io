@@ -4,7 +4,7 @@ body {
 a {
   font-family:Times New Roman;
   color:yellow;
-  target:blank;
+  font-style:italic;
 }
 p {
   font-family:Brush Script MT;
