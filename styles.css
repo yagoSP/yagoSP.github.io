@@ -1,21 +1,3 @@
-body {
-  background-color: white;
-}
-a {
-  font-family:Times New Roman;
-  color:yellow;
-  font-style:italic;
-}
-p {
-  font-family:Brush Script MT;
-  color:cyan;
-  text-align:center;
-}
-p { 
-  font-family:verdana;
-  color:red;
-  text-align:center;
-}
-.teste {
-  color: cyan;
+.test {
+  color cyan;
 }
