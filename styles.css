@@ -1,5 +1,5 @@
 body {
-  background-color:black;
+  background-color: white;
 }
 a {
   font-family:Times New Roman;
@@ -15,4 +15,7 @@ p {
   font-family:verdana;
   color:red;
   text-align:center;
+}
+.teste {
+  color: cyan;
 }
