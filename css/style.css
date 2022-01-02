@@ -3,7 +3,7 @@ body {
 }
 .title {
   font-family: 'Orbitron', sans-serif;
-  color: #00eeff;
+  color: #ff5100;
   text-align: center;
 }
 .ipsum {
@@ -12,5 +12,5 @@ body {
 }
 .link1, .jisho, .page1 {
   font-family: 'Electrolize', sans-serif;
-  color: #00eeff;
+  color: #ff5100;
 }
