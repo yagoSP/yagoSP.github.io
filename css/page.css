@@ -1,0 +1,12 @@
+body {
+  background: #d9d9d9;
+}
+.title {
+  font-family: 'Chakra Petch', sans-serif;
+  color: #00fff7;
+  text-align: center;
+}
+.text {
+  font-family: 'Playfair Display SC', serif;
+  text-align: center;
+}
