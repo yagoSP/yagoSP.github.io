@@ -4,9 +4,11 @@ body {
 .title {
   color: #ff5100;
   text-align: center;
+  font-family: 'Changa', sans-serif;
 }
 .l1, .l2, .l3, .l4, .l5, .l6 {
   color: #ff5100;
   display: block;
+  font-family: 'Changa', sans-serif;
 }
   
