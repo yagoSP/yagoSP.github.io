@@ -28,7 +28,7 @@ p {
 }
 
 .sidebar {
-	position: absolute;
+	position: static;
 	top: 100px;
 	right: 10px;
 	width:  200px;
