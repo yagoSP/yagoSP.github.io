@@ -28,14 +28,13 @@ p {
 }
 
 .sidebar {
-	align: right;
-	position: static;
-	top: 100px;
-	right: 10px;
-	width:  200px;
-	height: 100%;
-	background-color: #03010f;
-	padding: 20px;
-	border: 3px solid #05d9e8;
-	border-radius: 5px;
+    position: fixed; /* ou absolute, dependendo do efeito desejado */
+    top: 100px;
+    right: 10px;
+    width: 200px;
+    height: calc(100% - 100px); /* Para ajustar a altura ao espaço disponível */
+    background-color: #03010f;
+    padding: 20px;
+    border: 3px solid #05d9e8;
+    border-radius: 5px;
 }
