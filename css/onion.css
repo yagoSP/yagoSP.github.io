@@ -28,6 +28,7 @@ p {
 }
 
 .sidebar {
+	align: right;
 	position: static;
 	top: 100px;
 	right: 10px;
