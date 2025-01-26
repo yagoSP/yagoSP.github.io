@@ -11,4 +11,13 @@ body {
   display: block;
   font-family: 'Changa', sans-serif;
 }
-  
+
+.content a{
+  color: #ff5100;
+  text-decoration: none;
+  color:
+}
+.content a:hover{
+  text-decoration: underline;
+  color: red;
+}
