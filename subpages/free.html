@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <style>
             body{
-                margin: 50px;
+                margin: 40px;
                 background-color: #0D0D0D;
                 font-family: "Saira", sans-serif;
                 font-optical-sizing: auto;
@@ -60,7 +60,7 @@
                 border:#09A603 1px solid;
                 color:#09A603;
             }
-            .formula select{
+            select{
                 background-color: #0D0D0D;
                 border: 1px #067302 solid;
                 color:#09A603
@@ -68,15 +68,30 @@
             fieldset{
                 border:#09A603 1px solid
             }
+            .wallet{
+              margin-bottom: 10px;
+              padding: 4px;
+              display: flex;
+              border:#067302 solid 1px;
+            }
             
         </style>
     </head>
     <body>
+      <div class="wallet">
+        <select>
+          <option value="">Selecione</option>
+          <option value="MON">Monero</option>
+          <option value="BTC">Bitcoin</option>
+        </select>
+        <span style="margin-left:4px;">24.000 SATS</span>
+      </div>
         <div class="msg">
             <h1>Welcome to Fr33 M4rket</h1>
             <p>O Free Market é uma plataforme de livre mercado totalmente anonima com sistema de pagamento p2p.</p>
         </div>
         <br>
+       
         <div class="filtro">
             <form class="formula" action="indexss.html" method="get">
                 <select>
