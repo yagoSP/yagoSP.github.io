@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosso Supermercado — Brodowski/SP | Tudo fresquinho, todo dia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFE4C9;
+    --paper-2:#E6D8B4;
+    --ink:#211C14;
+    --pine:#1E3B2B;
+    --pine-2:#173026;
+    --tomato:#C1432A;
+    --tomato-dark:#9A3220;
+    --crate-yellow:#E7AE3D;
+    --cream-card:#FAF4E4;
+    --line: rgba(33,28,20,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Anton', sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
+  .marker{font-family:'Caveat', cursive;}
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  /* texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(rgba(33,28,20,0.045) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+    max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Anton', sans-serif;
+    font-size:22px;
+    letter-spacing:0.02em;
+  }
+  .logo .dot{
+    width:14px; height:14px; border-radius:50%;
+    background:var(--tomato);
+    display:inline-block;
+  }
+  nav.links{display:flex; gap:28px; font-weight:600; font-size:14.5px;}
+  nav.links a{border-bottom:2px solid transparent; padding-bottom:2px; transition:border-color .15s;}
+  nav.links a:hover{border-color:var(--tomato);}
+  .call-btn{
+    background:var(--pine); color:var(--paper);
+    padding:10px 18px; border-radius:3px;
+    font-weight:700; font-size:14px;
+    border:2px solid var(--ink);
+    box-shadow:3px 3px 0 var(--ink);
+    transition:transform .12s, box-shadow .12s;
+    white-space:nowrap;
+  }
+  .call-btn:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink);}
+
+  .mobile-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 60px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--pine); color:var(--paper);
+    padding:6px 14px; border-radius:999px;
+    font-size:13px; font-weight:700; letter-spacing:0.04em;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; color:var(--crate-yellow); font-size:10px;}
+  h1.display{
+    font-size:clamp(42px, 6vw, 74px);
+    line-height:0.98;
+    margin:0 0 22px;
+  }
+  h1.display span{color:var(--tomato);}
+  .hero p.lead{
+    font-size:19px; line-height:1.55; max-width:480px;
+    color:#3a3327; margin-bottom:32px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 26px; border-radius:3px;
+    font-weight:700; font-size:15.5px;
+    border:2px solid var(--ink);
+  }
+  .btn-primary{
+    background:var(--tomato); color:var(--cream-card);
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform .12s, box-shadow .12s;
+  }
+  .btn-primary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink);}
+  .btn-ghost{
+    background:transparent; color:var(--ink);
+    box-shadow:none;
+  }
+  .btn-ghost:hover{background:rgba(33,28,20,0.06);}
+
+  .hero-stats{display:flex; gap:30px; flex-wrap:wrap;}
+  .stat{border-left:3px solid var(--tomato); padding-left:12px;}
+  .stat b{display:block; font-family:'Anton',sans-serif; font-size:22px;}
+  .stat span{font-size:13px; color:#4a4232;}
+
+  /* crate tag - signature element */
+  .hero-visual{position:relative; height:440px;}
+  .string{
+    position:absolute; top:-20px; left:50%; width:2px; height:60px;
+    background:repeating-linear-gradient(var(--ink) 0 6px, transparent 6px 11px);
+    transform:translateX(-50%) rotate(6deg);
+    transform-origin:top;
+  }
+  .crate-tag{
+    position:absolute; top:30px; left:50%;
+    transform:translateX(-50%) rotate(-4deg);
+    width:300px;
+    background:var(--crate-yellow);
+    border:3px solid var(--ink);
+    border-radius:6px;
+    padding:26px 22px 30px;
+    box-shadow:6px 8px 0 rgba(33,28,20,0.5);
+  }
+  .crate-tag::before{
+    content:"";
+    position:absolute; top:14px; left:50%; transform:translateX(-50%);
+    width:14px; height:14px; border-radius:50%;
+    background:var(--paper); border:3px solid var(--ink);
+  }
+  .crate-tag .tag-eyebrow{
+    font-size:12.5px; font-weight:800; letter-spacing:0.05em;
+    text-align:center; margin-bottom:6px; margin-top:8px;
+  }
+  .crate-tag .marker{
+    display:block; text-align:center;
+    font-size:40px; line-height:1; color:var(--tomato-dark);
+    transform:rotate(-2deg);
+  }
+  .crate-tag .tag-sub{
+    text-align:center; font-size:13px; font-weight:600; margin-top:8px; color:#3a3327;
+  }
+  .crate-photo{
+    position:absolute; bottom:0; right:0; width:78%;
+    border:3px solid var(--ink);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:8px 8px 0 rgba(33,28,20,0.55);
+  }
+  .crate-photo img{height:260px; width:100%; object-fit:cover;}
+  .crate-photo2{
+    position:absolute; bottom:36px; left:0; width:50%;
+    border:3px solid var(--ink);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:8px 8px 0 rgba(33,28,20,0.55);
+    z-index:2;
+  }
+  .crate-photo2 img{height:170px; width:100%; object-fit:cover;}
+
+  /* ---------- TRUST BAR ---------- */
+  .trustbar{
+    background:var(--pine); color:var(--paper);
+    border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);
+    padding:16px 0;
+  }
+  .trust-inner{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    font-weight:600; font-size:14.5px;
+  }
+  .trust-inner div{display:flex; align-items:center; gap:8px;}
+  .trust-inner b{color:var(--crate-yellow); font-family:'Anton',sans-serif; font-size:15px;}
+
+  /* ---------- SECTIONS GENERIC ---------- */
+  section{padding:84px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-eyebrow{
+    font-weight:800; font-size:13px; letter-spacing:0.08em;
+    color:var(--tomato-dark); margin-bottom:10px; display:block;
+  }
+  h2.display{font-size:clamp(30px,4vw,46px); line-height:1.02; margin:0 0 14px;}
+  .section-head p{font-size:17px; color:#3a3327; line-height:1.55;}
+
+  /* ---------- SETORES ---------- */
+  .setores-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:18px;
+  }
+  .setor-card{
+    background:var(--cream-card);
+    border:2px solid var(--ink);
+    border-radius:6px;
+    padding:24px 18px 22px;
+    box-shadow:5px 5px 0 rgba(33,28,20,0.35);
+    transition:transform .15s, box-shadow .15s;
+    position:relative;
+  }
+  .setor-card:hover{transform:translateY(-6px); box-shadow:5px 11px 0 rgba(33,28,20,0.35);}
+  .setor-num{
+    font-family:'Anton',sans-serif; font-size:13px;
+    color:var(--paper); background:var(--tomato);
+    width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    position:absolute; top:-13px; left:16px;
+    border:2px solid var(--ink);
+  }
+  .setor-card h3{font-family:'Anton',sans-serif; font-size:19px; margin:10px 0 8px; text-transform:uppercase;}
+  .setor-card p{font-size:13.5px; color:#4a4232; line-height:1.45; margin:0 0 14px; min-height:56px;}
+  .setor-card .go{font-size:13px; font-weight:800; color:var(--pine); display:inline-flex; gap:6px; align-items:center;}
+
+  /* ---------- OFERTA (signature repeat) ---------- */
+  .oferta{
+    background:var(--pine); color:var(--paper);
+    border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);
+    position:relative; overflow:hidden;
+  }
+  .oferta-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+  }
+  .oferta h2.display{color:var(--paper);}
+  .oferta h2.display span{color:var(--crate-yellow);}
+  .oferta p{font-size:17px; line-height:1.6; color:#dcd6c3; max-width:460px; margin-bottom:28px;}
+  .board{
+    background:#132419;
+    border:3px solid var(--crate-yellow);
+    border-radius:8px;
+    padding:34px 30px;
+    box-shadow:8px 8px 0 rgba(0,0,0,0.35);
+    transform:rotate(-1.5deg);
+  }
+  .board .marker{font-size:34px; color:var(--crate-yellow); display:block; margin-bottom:6px; transform:rotate(1deg);}
+  .board ul{list-style:none; margin:16px 0 0; padding:0;}
+  .board li{
+    display:flex; justify-content:space-between;
+    padding:10px 0; border-bottom:1px dashed rgba(239,228,201,0.3);
+    font-size:15px; font-weight:600;
+  }
+  .board li b{color:var(--crate-yellow); font-family:'Anton',sans-serif; font-weight:400;}
+
+  /* ---------- COMO FUNCIONA ---------- */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .step{
+    border-left:3px solid var(--ink);
+    padding-left:20px;
+  }
+  .step .n{font-family:'Anton',sans-serif; font-size:34px; color:var(--tomato); display:block; margin-bottom:6px;}
+  .step h3{font-size:18px; margin:0 0 8px;}
+  .step p{font-size:14.5px; color:#4a4232; line-height:1.55; margin:0;}
+
+  /* ---------- LOCALIZAÇÃO / CTA FINAL ---------- */
+  .local{
+    background:var(--cream-card);
+    border:2px solid var(--ink);
+    border-radius:10px;
+    padding:48px;
+    display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;
+    box-shadow:8px 8px 0 rgba(33,28,20,0.25);
+  }
+  .local-list{list-style:none; padding:0; margin:24px 0 30px;}
+  .local-list li{
+    display:flex; gap:12px; padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+  .local-list li:last-child{border-bottom:none;}
+  .local-list b{min-width:110px; color:var(--pine);}
+  .map-box iframe{
+    width:100%; height:280px; border:2px solid var(--ink); border-radius:6px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink); color:var(--paper);
+    padding:50px 0 24px;
+  }
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  footer h4{font-family:'Anton',sans-serif; font-size:15px; letter-spacing:0.04em; margin:0 0 16px; color:var(--crate-yellow);}
+  footer p, footer a{font-size:14px; color:#cfc7ae; line-height:1.7;}
+  footer .flogo{font-family:'Anton',sans-serif; font-size:22px; color:var(--paper); margin-bottom:12px; display:block;}
+  footer ul{list-style:none; padding:0; margin:0;}
+  footer li{margin-bottom:8px;}
+  footer a:hover{color:var(--crate-yellow);}
+  .footer-bottom{
+    border-top:1px solid rgba(239,228,201,0.15);
+    padding-top:20px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:12.5px; color:#8f886f;
+  }
+
+  /* ---------- STICKY MOBILE CTA ---------- */
+  .sticky-cta{
+    position:fixed; bottom:0; left:0; right:0; z-index:60;
+    background:var(--tomato); border-top:2px solid var(--ink);
+    padding:14px 20px; display:none;
+    align-items:center; justify-content:center; gap:10px;
+    font-weight:800; color:var(--cream-card); font-size:15px;
+  }
+
+  @media (max-width: 980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{height:360px; margin-top:20px;}
+    .setores-grid{grid-template-columns:repeat(3,1fr);}
+    .oferta-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .local{grid-template-columns:1fr; padding:32px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 640px){
+    nav.links, .call-btn{display:none;}
+    .setores-grid{grid-template-columns:repeat(2,1fr);}
+    .trust-inner{justify-content:flex-start;}
+    .footer-grid{grid-template-columns:1fr;}
+    .sticky-cta{display:flex;}
+    body{padding-bottom:64px;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>NOSSO SUPERMERCADO</div>
+    <nav class="links">
+      <a href="#setores">Setores</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#local">Localização</a>
+      <a href="https://nossosupermercado.com/fotos/">Fotos</a>
+      <a href="https://nossosupermercado.com/contato/">Contato</a>
+    </nav>
+    <a class="call-btn" href="tel:+551636648100">📞 (16) 3664-8100</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Brodowski / SP · Entrega grátis em domicílio</span>
+      <h1 class="display">Tudo <span>fresquinho</span>,<br>todo dia.</h1>
+      <p class="lead">O mercado de bairro que Brodowski confia há anos: açougue, hortifruti e padaria fresquinhos, preço justo e entrega gratuita na sua porta.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.nossosupermercado.com/nossosup.pdf" target="_blank" rel="noopener">🛒 Ver ofertas da semana</a>
+        <a class="btn btn-ghost" href="tel:+551636648100">Ligar e fazer pedido →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>08h – 20h</b><span>Segunda a sábado</span></div>
+        <div class="stat"><b>Grátis</b><span>Entrega em domicílio</span></div>
+        <div class="stat"><b>5 setores</b><span>Açougue, frios, horti, congelados, padaria</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="string"></div>
+      <div class="crate-tag">
+        <div class="tag-eyebrow">OFERTA DA SEMANA</div>
+        <span class="marker">Confira já!</span>
+        <div class="tag-sub">Encarte novo toda semana</div>
+      </div>
+      <div class="crate-photo"><img src="https://nossosupermercado.com/wp-content/uploads/2024/09/nossosupermercado004-1.jpg" alt="Corredor do Nosso Supermercado"></div>
+      <div class="crate-photo2"><img src="https://nossosupermercado.com/wp-content/uploads/2024/09/nossosupermercado008-1.jpg" alt="Setor de hortifruti"></div>
+    </div>
+  </div>
+</section>
+
+<div class="trustbar">
+  <div class="wrap trust-inner">
+    <div><b>✓</b> Entrega grátis em domicílio</div>
+    <div><b>✓</b> Atendimento de seg. a sáb., 8h às 20h</div>
+    <div><b>✓</b> Açougue e padaria próprios</div>
+    <div><b>✓</b> Encarte de ofertas atualizado toda semana</div>
+  </div>
+</div>
+
+<section id="setores">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">NOSSOS SETORES</span>
+      <h2 class="display">Cinco corredores, um só endereço.</h2>
+      <p>Cada setor cuidado por quem entende do assunto — do corte certo da carne ao pão saindo do forno.</p>
+    </div>
+    <div class="setores-grid">
+      <a class="setor-card" href="https://nossosupermercado.com/acougue/">
+        <div class="setor-num">1</div>
+        <h3>Açougue</h3>
+        <p>Cortes selecionados, na medida que sua receita pede.</p>
+        <span class="go">Ver setor →</span>
+      </a>
+      <a class="setor-card" href="https://nossosupermercado.com/acougue-2/">
+        <div class="setor-num">2</div>
+        <h3>Frios</h3>
+        <p>Queijos, embutidos e laticínios frescos todos os dias.</p>
+        <span class="go">Ver setor →</span>
+      </a>
+      <a class="setor-card" href="https://nossosupermercado.com/hortifruti-2/">
+        <div class="setor-num">3</div>
+        <h3>Hortifruti</h3>
+        <p>Frutas e verduras selecionadas, direto da roça pra sua mesa.</p>
+        <span class="go">Ver setor →</span>
+      </a>
+      <a class="setor-card" href="https://nossosupermercado.com/congelados-2/">
+        <div class="setor-num">4</div>
+        <h3>Congelados</h3>
+        <p>Praticidade sem abrir mão da qualidade no seu dia a dia.</p>
+        <span class="go">Ver setor →</span>
+      </a>
+      <a class="setor-card" href="https://nossosupermercado.com/padaria/">
+        <div class="setor-num">5</div>
+        <h3>Padaria</h3>
+        <p>Pão fresquinho e doces de padaria feitos na casa.</p>
+        <span class="go">Ver setor →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="oferta" id="ofertas">
+  <div class="wrap oferta-grid">
+    <div>
+      <span class="section-eyebrow" style="color:var(--crate-yellow)">ENCARTE SEMANAL</span>
+      <h2 class="display">Economia de <span>verdade</span>, toda semana.</h2>
+      <p>Baixe o encarte atualizado e monte sua lista de compras antes de vir até a loja — ou peça direto por telefone e receba em casa, sem custo de entrega.</p>
+      <a class="btn btn-primary" href="https://www.nossosupermercado.com/nossosup.pdf" target="_blank" rel="noopener">📄 Baixar encarte em PDF</a>
+    </div>
+    <div class="board">
+      <span class="marker">Quadro de ofertas</span>
+      <ul>
+        <li>Hortifruti selecionado <b>toda semana</b></li>
+        <li>Cortes de açougue <b>preço de custo</b></li>
+        <li>Padaria <b>fresquinha o dia todo</b></li>
+        <li>Entrega em domicílio <b>sempre grátis</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">COMO FUNCIONA</span>
+      <h2 class="display">Do encarte à sua porta.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Veja as ofertas</h3>
+        <p>Confira o encarte da semana em PDF ou passe na loja para ver os preços de perto.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Faça seu pedido</h3>
+        <p>Ligue para (16) 3664-8100 / 3664-8106 ou venha até a loja em Brodowski.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Receba em casa</h3>
+        <p>Entregamos gratuitamente em seu domicílio, sem taxa nenhuma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="local">
+  <div class="wrap">
+    <div class="local">
+      <div>
+        <span class="section-eyebrow">ONDE ESTAMOS</span>
+        <h2 class="display" style="font-size:32px;">Venha nos visitar em Brodowski.</h2>
+        <ul class="local-list">
+          <li><b>Endereço</b> Rua Vereador José Sabino, Nº 620 — Brodowski/SP — CEP 14340-000</li>
+          <li><b>Telefones</b> (16) 3664-8100 e (16) 3664-8106</li>
+          <li><b>Horário</b> Segunda a sábado, das 8h às 20h</li>
+          <li><b>Entrega</b> Gratuita em domicílio</li>
+        </ul>
+        <a class="btn btn-primary" href="tel:+551636648100">📞 Ligar agora</a>
+      </div>
+      <div class="map-box">
+        <iframe src="https://maps.google.com/maps?q=Rua%20Vereador%20Jos%C3%A9%20Sabino%2C%20620%2C%20Brodowski%2C%20SP&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <span class="flogo">NOSSO SUPERMERCADO</span>
+        <p>O mercado de bairro de Brodowski/SP. Açougue, frios, hortifruti, congelados e padaria com entrega gratuita em domicílio.</p>
+      </div>
+      <div>
+        <h4>NAVEGUE</h4>
+        <ul>
+          <li><a href="#setores">Setores</a></li>
+          <li><a href="#ofertas">Ofertas</a></li>
+          <li><a href="https://nossosupermercado.com/fotos/">Fotos</a></li>
+          <li><a href="https://nossosupermercado.com/contato/">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>CONTATO</h4>
+        <ul>
+          <li>Rua Vereador José Sabino, 620<br>Brodowski/SP — CEP 14340-000</li>
+          <li>(16) 3664-8100 / 3664-8106</li>
+          <li>Seg a sáb, 8h às 20h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© Nosso Supermercado — todos os direitos reservados.</span>
+      <span>Brodowski / SP</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="tel:+551636648100" style="color:inherit;">📞 Ligar e fazer pedido</a>
+</div>
+
+</body>
+</html>
