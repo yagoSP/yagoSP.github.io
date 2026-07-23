@@ -1,40 +1,398 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-		<title>Master</title>
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="sortcut icon" href="images/favicon2.jpeg">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Electrolize&display=swap" rel="stylesheet">
-	</head>
-		
-	<body>
-		<h1 class="title">Silerohc Room</h1> <!--Chorelis-->
-		<hr>
-		<p class="ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fermentum sodales neque, quis consectetur lorem aliquam vulputate. Integer fringilla sem eu mollis tempus. Cras ante ex, viverra sit amet ipsum eu, venenatis tincidunt nisl. Vestibulum metus nulla, consectetur at aliquet eget, facilisis et tellus. Donec dapibus consequat eros at eleifend. Sed auctor aliquet nisl, ac ullamcorper metus malesuada nec. Donec vel molestie justo. Nulla facilisi. Nullam malesuada quis odio eget gravida. Quisque eget dignissim odio.
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yago Silva — Desenvolvedor de Landing Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4EE;
+    --paper-2:#ECE8DD;
+    --card:#FFFFFF;
+    --ink:#15151A;
+    --ink-soft:#55565F;
+    --indigo:#4338CA;
+    --indigo-soft:#EDEBFB;
+    --lime:#C6F135;
+    --line: rgba(21,21,26,0.12);
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Manrope', sans-serif; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Sora', sans-serif; font-weight:700; margin:0; letter-spacing:-0.01em;}
+  .mono{font-family:'Space Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ul{margin:0; padding:0; list-style:none;}
+  .wrap{max-width:1160px; margin:0 auto; padding:0 24px;}
 
-Donec vestibulum risus neque, ac posuere enim molestie id. Nam faucibus felis vitae sem cursus pharetra. Nullam at dui ut velit viverra facilisis quis vel lorem. Quisque at mauris felis. Nunc tristique cursus est id mollis. Fusce ut purus libero. Nullam venenatis felis pulvinar, malesuada augue a, maximus ligula. Pellentesque et condimentum orci. Nullam hendrerit eros vel accumsan tristique. Proin eget magna et justo sagittis interdum. Quisque at ligula vitae ipsum dapibus interdum pharetra eget ante. Suspendisse consectetur augue at lectus pulvinar, ut porttitor nisl molestie. Integer luctus, dolor imperdiet malesuada interdum, elit arcu feugiat justo, et ullamcorper sem eros in mi. Nam sed purus id neque fringilla euismod.
+  /* ---------- BROWSER CHROME (signature element) ---------- */
+  .browser{
+    background:var(--card); border:1.5px solid var(--ink);
+    border-radius:12px; overflow:hidden;
+    box-shadow:0 14px 32px rgba(21,21,26,0.14);
+  }
+  .browser-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 14px; border-bottom:1.5px solid var(--ink);
+    background:var(--paper-2);
+  }
+  .browser-dot{width:9px; height:9px; border-radius:50%; background:var(--ink); opacity:0.25;}
+  .browser-url{
+    flex:1; margin-left:6px; background:var(--card); border:1px solid var(--line);
+    border-radius:6px; padding:5px 10px; font-size:12.5px; color:var(--ink-soft);
+    display:flex; align-items:center; gap:6px; overflow:hidden; white-space:nowrap;
+  }
+  .browser-url .lock{opacity:0.5;}
+  .browser-body{padding:22px;}
 
-Suspendisse ullamcorper lacus et nisl feugiat blandit. Nulla at sodales purus. Proin euismod leo blandit rhoncus iaculis. Proin quis purus vitae odio convallis hendrerit ac vitae nisl. Aenean volutpat tempus pellentesque. Pellentesque condimentum, leo ut ultrices imperdiet, enim ante dapibus lectus, eu vehicula libero quam eget nulla. Sed dictum libero non commodo cursus. Aliquam tristique rhoncus diam, a molestie ligula semper in. Mauris pellentesque ipsum quis lorem lacinia consectetur porta non mi.</p>
-		<hr>
-		<div class="links">
-			<a href="https://www.lipsum.com/">Lorem Ipsum</a>
-			<br>
-			<a href="subpages/pdfs.html">Lista de PDFs</a>
-			<br>
-			<a href="https://jisho.org/">Jisho (Japanese Dictionary)</a>
-			<br>
-			<a href="subpages/page1.html">+Calc</a>
-			<br>
-			<a href="subpages/gore.html">GORE...+18</a>
-			<br>
-			<a href="subpages/onion.html">Links Onion</a>
-		</div>
-		<p>Online desde 1/11/2020</p>
-	</body>
+  /* typing cursor in hero */
+  .typed-cursor{
+    display:inline-block; width:2px; height:1em; background:var(--ink);
+    vertical-align:text-bottom; margin-left:2px;
+    animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .typed-cursor{ animation:none; } }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,244,238,0.9); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px; max-width:1160px; margin:0 auto;
+  }
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:18px;}
+  .logo .dot{width:10px; height:10px; border-radius:50%; background:var(--indigo); display:inline-block;}
+  nav.links{display:flex; gap:28px; font-weight:600; font-size:14px;}
+  nav.links a{border-bottom:2px solid transparent; padding-bottom:3px; transition:border-color .15s;}
+  nav.links a:hover{border-color:var(--indigo);}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:13px 24px; border-radius:8px; font-weight:700; font-size:14.5px;
+    transition:transform .15s, box-shadow .15s, background .15s;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper); box-shadow:4px 4px 0 var(--indigo);}
+  .btn-primary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--indigo);}
+  .btn-ghost{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:rgba(21,21,26,0.05);}
+  .btn-sm{padding:10px 18px; font-size:13.5px;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:76px 0 64px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--indigo-soft); color:var(--indigo);
+    padding:7px 14px; border-radius:999px; font-size:13px; font-weight:700;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; font-size:9px;}
+  h1{font-size:clamp(36px,4.6vw,56px); line-height:1.05; margin-bottom:20px;}
+  h1 mark{background:var(--lime); padding:0 6px; color:var(--ink);}
+  .lead{font-size:18.5px; color:var(--ink-soft); max-width:460px; margin-bottom:30px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:30px;}
+  .stack-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .stack-tag{
+    font-family:'Space Mono',monospace; font-size:12px; padding:6px 12px;
+    background:var(--card); border:1px solid var(--line); border-radius:999px; color:var(--ink-soft);
+  }
+
+  .hero-browser .browser-body{padding:0;}
+  .hero-browser .fake-page{padding:26px;}
+  .hero-browser h3{font-size:15px; margin-bottom:6px;}
+  .hero-browser p{font-size:12.5px; color:var(--ink-soft); margin:0 0 16px;}
+  .fake-cta{
+    display:inline-block; background:var(--indigo); color:#fff; font-size:12.5px; font-weight:700;
+    padding:9px 16px; border-radius:6px;
+  }
+  .fake-bar{height:9px; border-radius:4px; background:var(--paper-2); margin-bottom:8px;}
+  .fake-bar.w60{width:60%;} .fake-bar.w80{width:80%;} .fake-bar.w40{width:40%;}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trustbar{background:var(--ink); color:var(--paper); padding:16px 0;}
+  .trust-inner{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-weight:600; font-size:14px;}
+  .trust-inner div{display:flex; align-items:center; gap:8px;}
+  .trust-inner b{color:var(--lime);}
+
+  section{padding:88px 0;}
+  .section-head{max-width:600px; margin-bottom:48px;}
+  .section-eyebrow{font-weight:700; font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--indigo); margin-bottom:12px; display:block;}
+  h2{font-size:clamp(28px,3.4vw,40px); line-height:1.1; margin-bottom:14px;}
+  .section-head p{font-size:16.5px; color:var(--ink-soft);}
+
+  /* ---------- SOBRE ---------- */
+  .sobre-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .sobre-grid p{font-size:16.5px; color:var(--ink-soft); margin-bottom:16px; line-height:1.65;}
+  .skills-list{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;}
+  .skill-chip{
+    font-family:'Space Mono',monospace; font-size:12.5px; padding:8px 14px;
+    background:var(--card); border:1px solid var(--line); border-radius:8px;
+  }
+
+  /* ---------- PROJETOS ---------- */
+  .projetos-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .proj-card{display:flex; flex-direction:column; gap:14px;}
+  .proj-browser .browser-body{padding:0;}
+  .proj-swatch{height:140px; display:flex; align-items:flex-end; padding:16px; gap:6px;}
+  .proj-swatch span{
+    font-family:'Space Mono',monospace; font-size:11px; color:rgba(255,255,255,0.85);
+    background:rgba(0,0,0,0.18); padding:4px 8px; border-radius:6px;
+  }
+  .proj-1 .proj-swatch{background:linear-gradient(135deg,#1E3B2B,#C1432A);}
+  .proj-2 .proj-swatch{background:linear-gradient(135deg,#173026,#E7AE3D);}
+  .proj-3 .proj-swatch{background:linear-gradient(135deg,#6E8F72,#C89B3C);}
+  .proj-info h3{font-size:17px; margin-bottom:6px;}
+  .proj-info p{font-size:14px; color:var(--ink-soft); margin:0 0 14px;}
+  .proj-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+  .proj-tag{font-size:11px; font-family:'Space Mono',monospace; background:var(--paper-2); padding:4px 9px; border-radius:999px; color:var(--ink-soft);}
+  .proj-link{font-weight:700; font-size:14px; color:var(--indigo); display:inline-flex; gap:6px; align-items:center;}
+
+  /* ---------- PROCESSO ---------- */
+  .processo-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .processo-step{border-left:2px solid var(--ink); padding-left:18px;}
+  .processo-step .n{font-family:'Space Mono',monospace; font-size:13px; color:var(--indigo); display:block; margin-bottom:8px;}
+  .processo-step h3{font-size:16.5px; margin-bottom:8px;}
+  .processo-step p{font-size:14px; color:var(--ink-soft); margin:0;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:var(--ink); color:var(--paper); border-radius:22px;
+    padding:64px 48px; text-align:center;
+  }
+  .cta-final h2{color:#fff; margin-bottom:14px;}
+  .cta-final p{font-size:16.5px; color:#C7C6D0; max-width:460px; margin:0 auto 30px;}
+  .cta-final .btn-primary{background:var(--lime); color:var(--ink); box-shadow:none;}
+  .cta-final .btn-primary:hover{transform:translateY(-2px);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:50px 0 30px; border-top:1px solid var(--line);}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; margin-bottom:24px;}
+  footer .flogo{font-family:'Sora',sans-serif; font-weight:700; font-size:18px; margin-bottom:8px; display:block;}
+  footer p{font-size:13.5px; color:var(--ink-soft); max-width:320px; margin:0;}
+  .footer-links{display:flex; gap:22px; flex-wrap:wrap; font-size:13.5px;}
+  .footer-links a:hover{color:var(--indigo);}
+  .footer-bottom{font-size:12px; color:var(--ink-soft); opacity:0.8; border-top:1px solid var(--line); padding-top:18px;}
+
+  @media (max-width: 980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .sobre-grid{grid-template-columns:1fr;}
+    .projetos-grid{grid-template-columns:1fr 1fr;}
+    .processo-grid{grid-template-columns:1fr 1fr;}
+    .cta-final{padding:48px 28px;}
+  }
+  @media (max-width: 640px){
+    nav.links{display:none;}
+    .projetos-grid{grid-template-columns:1fr;}
+    .processo-grid{grid-template-columns:1fr;}
+    .footer-grid{flex-direction:column;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo"><span class="dot"></span>Yago Silva</div>
+    <nav class="links">
+      <a href="#projetos">Projetos</a>
+      <a href="#processo">Processo</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#contato">Vamos conversar</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Desenvolvedor de Landing Pages</span>
+      <h1>Páginas que carregam rápido<br>e <mark>convertem</mark> melhor.</h1>
+      <p class="lead">Sou Yago Silva, desenvolvedor especializado em landing pages de alta conversão — do briefing ao código, unindo design, copy persuasivo e performance.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#projetos">Ver projetos</a>
+        <a class="btn btn-ghost" href="#contato">Falar com Yago</a>
+      </div>
+      <div class="stack-row">
+        <span class="stack-tag">HTML5</span>
+        <span class="stack-tag">CSS3</span>
+        <span class="stack-tag">JavaScript</span>
+        <span class="stack-tag">Copywriting</span>
+        <span class="stack-tag">Otimização de conversão</span>
+      </div>
+    </div>
+    <div class="hero-browser browser">
+      <div class="browser-bar">
+        <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+        <div class="browser-url"><span class="lock">🔒</span><span class="mono">yagosilva<span class="typed-cursor"></span></span></div>
+      </div>
+      <div class="fake-page">
+        <h3>Sua landing page, sob medida</h3>
+        <p>headline · prova social · CTA</p>
+        <div class="fake-bar w80"></div>
+        <div class="fake-bar w60"></div>
+        <div class="fake-bar w40" style="margin-bottom:18px;"></div>
+        <span class="fake-cta">Fale comigo →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trustbar">
+  <div class="wrap trust-inner">
+    <div><b>→</b> Design + copy + código, tudo sob medida</div>
+    <div><b>→</b> Foco em CTA, prova social e FAQ que convertem</div>
+    <div><b>→</b> Páginas responsivas e leves</div>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="wrap sobre-grid">
+    <div>
+      <span class="section-eyebrow">SOBRE</span>
+      <h2>Landing pages pensadas pra vender, não só pra existir.</h2>
+    </div>
+    <div>
+      <p>Trabalho no desenvolvimento de landing pages para negócios locais e profissionais liberais — do zero, com HTML, CSS e JavaScript, sempre com foco em uma coisa: transformar visita em contato.</p>
+      <p>Cada página é construída sob medida para o negócio: identidade visual própria, estrutura pensada pra conversão e copy que fala a língua de quem vai comprar.</p>
+      <div class="skills-list">
+        <span class="skill-chip">HTML / CSS / JS</span>
+        <span class="skill-chip">Design responsivo</span>
+        <span class="skill-chip">Copywriting persuasivo</span>
+        <span class="skill-chip">Prova social & FAQ</span>
+        <span class="skill-chip">Integração com WhatsApp</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">PROJETOS</span>
+      <h2>Alguns trabalhos recentes.</h2>
+      <p>Landing pages desenvolvidas sob medida para cada negócio, com identidade visual própria e foco em conversão.</p>
+    </div>
+    <div class="projetos-grid">
+      <div class="proj-card">
+        <div class="proj-browser browser proj-1">
+          <div class="browser-bar">
+            <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+            <div class="browser-url mono">nossosupermercado.com</div>
+          </div>
+          <div class="browser-body"><div class="proj-swatch"><span>Varejo</span></div></div>
+        </div>
+        <div class="proj-info">
+          <h3>Nosso Supermercado</h3>
+          <p>Landing page institucional para mercado de bairro, com setores, encarte de ofertas e CTA direto por telefone.</p>
+          <div class="proj-tags"><span class="proj-tag">Varejo</span><span class="proj-tag">Conversão local</span></div>
+          <a class="proj-link" href="nosso-supermercado.html">Ver página →</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-browser browser proj-2">
+          <div class="browser-bar">
+            <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+            <div class="browser-url mono">nossosupermercado.com/acougue</div>
+          </div>
+          <div class="browser-body"><div class="proj-swatch"><span>Setor</span></div></div>
+        </div>
+        <div class="proj-info">
+          <h3>Açougue — Nosso Supermercado</h3>
+          <p>Página de setor dentro do mesmo sistema visual, com dicas de preparo e CTA de encomenda por telefone.</p>
+          <div class="proj-tags"><span class="proj-tag">Subpágina</span><span class="proj-tag">Design system</span></div>
+          <a class="proj-link" href="acougue.html">Ver página →</a>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-browser browser proj-3">
+          <div class="browser-bar">
+            <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+            <div class="browser-url mono">dra-marina-ribeiro.com.br</div>
+          </div>
+          <div class="browser-body"><div class="proj-swatch"><span>Saúde</span></div></div>
+        </div>
+        <div class="proj-info">
+          <h3>Psicóloga — Ribeirão Preto</h3>
+          <p>Landing page para captação de pacientes via WhatsApp, com benefícios, prova social e FAQ.</p>
+          <div class="proj-tags"><span class="proj-tag">Saúde</span><span class="proj-tag">Captação de leads</span></div>
+          <a class="proj-link" href="psicologa-ribeirao-preto.html">Ver página →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="processo">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">COMO TRABALHO</span>
+      <h2>Do briefing à página no ar.</h2>
+    </div>
+    <div class="processo-grid">
+      <div class="processo-step">
+        <span class="n">01</span>
+        <h3>Briefing</h3>
+        <p>Entendo seu negócio, público e o que a página precisa fazer converter.</p>
+      </div>
+      <div class="processo-step">
+        <span class="n">02</span>
+        <h3>Design & copy</h3>
+        <p>Defino identidade visual e escrevo os textos com foco em conversão.</p>
+      </div>
+      <div class="processo-step">
+        <span class="n">03</span>
+        <h3>Desenvolvimento</h3>
+        <p>Código HTML, CSS e JS sob medida, responsivo e leve.</p>
+      </div>
+      <div class="processo-step">
+        <span class="n">04</span>
+        <h3>Entrega & ajustes</h3>
+        <p>Você recebe a página pronta, com espaço para ajustes finos antes do ar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>Vamos construir sua próxima landing page?</h2>
+      <p>Me conta sobre o seu negócio e eu te mostro como transformar isso em uma página que converte de verdade.</p>
+      <a class="btn btn-primary" href="https://wa.me/5516999999999?text=Ol%C3%A1%2C%20Yago%2C%20vi%20seu%20portf%C3%B3lio%20e%20quero%20falar%20sobre%20uma%20landing%20page." target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <span class="flogo">Yago Silva</span>
+        <p>Desenvolvedor de landing pages — design, copy e código sob medida para o seu negócio.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#projetos">Projetos</a>
+        <a href="#processo">Processo</a>
+        <a href="https://wa.me/5516999999999" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:contato@yagosilva.dev">E-mail</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Yago Silva — Desenvolvedor de Landing Pages. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+</body>
 </html>
